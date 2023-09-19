@@ -12,16 +12,18 @@ type WeatherResponse = {
     dt: number;
     sunrise: number;
     sunset: number;
-    humidity: string;
-    feels_like: string;
+    humidity: number;
+    feels_like: number;
     temp: string;
     weather: WeatherProp[];
   };
   daily: {
     dt: number;
+    sunrise: number;
+    sunset: number;
     temp: {
-      min: string;
-      max: string;
+      min: number;
+      max: number;
     };
     weather: WeatherProp[];
   }[];

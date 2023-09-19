@@ -28,3 +28,7 @@ export const formatTime: FormatTimeFunction = (
     return date.toLocaleTimeString(undefined, { hour12: true, ...common });
   }
 };
+
+export const getWeek = (date: Date) => {
+  return date.toLocaleString("en-us", { weekday: "short" });
+};

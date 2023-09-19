@@ -72,7 +72,7 @@ export const ForecastLink = styled(Link).attrs<{
 export const CurrentContainer = styled.div`
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(2, auto);
   align-items: center;
   margin: 10rem auto 0;
 `;
