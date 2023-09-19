@@ -53,11 +53,20 @@ export const ForecastLinkContainer = styled.div`
   grid-column-gap: 1rem;
 `;
 
-export const ForecastLink = styled(Link)`
+export const ForecastLink = styled(Link).attrs<{
+  $selected: boolean;
+  $bg?: string;
+  $fg?: string;
+}>((props) => ({
+  $bg: props.$selected ? colors.white : colors.black,
+  $fg: props.$selected ? colors.blue : colors.white,
+}))`
   border: 1px solid ${colors.blue};
   border-radius: 0.4rem;
   text-align: center;
   padding: 0.1rem 1rem;
+  background: ${(props) => props.$bg};
+  color: ${(props) => props.$fg};
 `;
 
 export const CurrentContainer = styled.div`

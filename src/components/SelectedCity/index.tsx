@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { useCityStore } from "../../hooks/useCity";
 import { Weather } from "./Weather";
 import {
@@ -13,6 +14,7 @@ export const SelectedCity: React.FC<{
   type: "current" | "five-days";
 }> = ({ type }) => {
   const { city } = useCityStore();
+  const { pathname } = useLocation();
   return (
     <InfoContainer>
       {city ? (
@@ -21,8 +23,12 @@ export const SelectedCity: React.FC<{
           <ForecastContainer>
             <div style={{ marginBottom: "0.5rem" }}>Forecast</div>
             <ForecastLinkContainer>
-              <ForecastLink to="/">Current</ForecastLink>
-              <ForecastLink to="/5days">5 Days</ForecastLink>
+              <ForecastLink $selected={pathname === "/"} to="/">
+                Now
+              </ForecastLink>
+              <ForecastLink $selected={pathname === "/5days"} to="/5days">
+                5 Days
+              </ForecastLink>
             </ForecastLinkContainer>
           </ForecastContainer>
         </WeatherContainer>

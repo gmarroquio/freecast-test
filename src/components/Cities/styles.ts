@@ -8,10 +8,18 @@ export const CitiesGrid = styled.div`
   grid-column-gap: 0.75rem;
 `;
 
-export const City = styled.button`
+export const City = styled.button.attrs<{
+  $selected: boolean;
+  $bg?: string;
+  $fg?: string;
+}>((props) => ({
+  $bg: props.$selected ? colors.white : colors.black,
+  $fg: props.$selected ? colors.blue : colors.white,
+}))`
   border: 1px solid ${colors.blue};
   border-radius: 0.4rem;
-  background: transparent;
+  background: ${(props) => props.$bg};
+  color: ${(props) => props.$fg};
   padding: 0.75rem 0.25rem;
   transition: 200ms;
   text-transform: capitalize;
