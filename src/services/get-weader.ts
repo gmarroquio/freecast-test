@@ -1,17 +1,21 @@
 import { api } from "./api";
 
+type WeatherProp = {
+  id: number;
+  icon: string;
+  main: string;
+};
+
 type WeatherResponse = {
+  timezone_offset: number;
   current: {
     dt: number;
-    sunrise: string;
-    sunset: string;
+    sunrise: number;
+    sunset: number;
     humidity: string;
     feels_like: string;
     temp: string;
-    weather: {
-      id: number;
-      icon: string;
-    };
+    weather: WeatherProp[];
   };
   daily: {
     dt: number;
@@ -19,10 +23,7 @@ type WeatherResponse = {
       min: string;
       max: string;
     };
-    weather: {
-      id: number;
-      icon: string;
-    };
+    weather: WeatherProp[];
   }[];
 };
 

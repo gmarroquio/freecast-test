@@ -10,9 +10,9 @@ export const CitiesGrid = styled.div`
 
 export const City = styled.button`
   border: 1px solid ${colors.blue};
-  border-radius: 0.25rem;
+  border-radius: 0.4rem;
   background: transparent;
-  padding: 1rem 0.5rem;
+  padding: 0.75rem 0.25rem;
   transition: 200ms;
   text-transform: capitalize;
 

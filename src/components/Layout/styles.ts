@@ -14,7 +14,6 @@ export const ThemeItem = styled(NavItem).attrs({ as: "button" })`
   margin-left: 2rem;
   background: transparent;
   border: none;
-  font-size: 1rem;
   display: flex;
   align-items: center;
 

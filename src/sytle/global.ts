@@ -20,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
   textarea,
   button {
     font-family: 'Helvetica Neue', 'Helvetica', 'Roboto';
-    font-weight: bold;
+    font-weight: 700;
     color: ${colors.white}
   }
 
@@ -35,7 +35,7 @@ const GlobalStyles = createGlobalStyle`
   #root {
     width: 100%;
     height: 100vh;
-    padding: 16px 24px;
+    padding: 0.75rem 1rem;
     display: flex;
     flex-direction: column;
   }
