@@ -74,7 +74,7 @@ export const CurrentContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, auto);
   align-items: center;
-  margin: 10rem auto 0;
+  margin: 0 auto;
 `;
 
 export const CurrentLeftSide = styled.div`

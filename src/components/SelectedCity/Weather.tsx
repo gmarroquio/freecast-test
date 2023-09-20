@@ -6,6 +6,7 @@ import { formatTime, getWeek } from "../../util/time";
 import { useCofig } from "../../hooks/useConfig";
 import { isBetween } from "../../util/number";
 import { unit } from "../../util/unit";
+import { Loading } from "../Loading";
 
 export const Weather: React.FC<{
   type: "current" | "five-days";
@@ -15,7 +16,7 @@ export const Weather: React.FC<{
   const { seconds, hourType, units } = useCofig();
 
   if (isLoading) {
-    return <div style={{ flex: 1 }}>Loading</div>;
+    return <Loading />;
   }
 
   if (!weather) return null;
