@@ -3,6 +3,7 @@ type HourType = "24h" | "am/pm";
 type FormatOptions = {
   type: HourType;
   seconds: boolean;
+  timezone?: string;
 };
 type FormatTimeFunction = (
   date: Date,
@@ -11,12 +12,13 @@ type FormatTimeFunction = (
 
 export const formatTime: FormatTimeFunction = (
   date,
-  { type = "24h", seconds = false },
+  { type = "24h", seconds = false, timezone = undefined },
 ) => {
   const common: Intl.DateTimeFormatOptions = {
     hour: "2-digit",
     minute: "2-digit",
     second: seconds ? "2-digit" : undefined,
+    timeZone: timezone,
   };
 
   if (type === "24h") {

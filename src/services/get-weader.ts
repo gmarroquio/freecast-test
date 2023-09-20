@@ -1,3 +1,4 @@
+import { UnitType } from "../hooks/useConfig";
 import { api } from "./api";
 
 type WeatherProp = {
@@ -8,6 +9,7 @@ type WeatherProp = {
 
 type WeatherResponse = {
   timezone_offset: number;
+  timezone: string;
   current: {
     dt: number;
     sunrise: number;
@@ -32,12 +34,14 @@ type WeatherResponse = {
 export const getWeather = async ({
   lat,
   lon,
+  units,
 }: {
   lat: number;
   lon: number;
+  units: UnitType;
 }) => {
   const { data } = await api.get<WeatherResponse>("data/2.5/onecall?", {
-    params: { lat, lon, exclude: "minutely,hourly,alerts", units: "metric" },
+    params: { lat, lon, exclude: "minutely,hourly,alerts", units },
   });
 
   return data;

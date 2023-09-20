@@ -1,30 +1,33 @@
 import { Outlet } from "react-router-dom";
 import { Time } from "../Time";
-import { useThemeStore } from "../../hooks/theme";
-import { NavItem, ThemeItem, NavBar } from "./styles";
+import { NavButton, NavBar, ThemeButton } from "./styles";
 import ThemeIcon from "../../assets/theme-switch.svg";
 import { Cities } from "../Cities";
+import { useConfig } from "../../hooks/useConfig";
+import { Modal } from "../Modal";
+import { useState } from "react";
 
 export const Layout: React.FC = () => {
-  const { changeTheme, theme } = useThemeStore();
-
-  function handleTheme() {
-    if (theme === "dark") changeTheme("light");
-    else if (theme === "light") changeTheme("dark");
-  }
+  const { toggleTheme } = useConfig();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
+      <Modal
+        isOpen={isOpen}
+        title="settings"
+        handleClose={() => setIsOpen(false)}
+      />
       <NavBar>
         <div>
           <Time />
         </div>
         <div style={{ display: "flex" }}>
-          <NavItem>Search</NavItem>
-          <NavItem>Setting</NavItem>
-          <ThemeItem onClick={handleTheme}>
+          <NavButton>Search</NavButton>
+          <NavButton onClick={() => setIsOpen(true)}>Setting</NavButton>
+          <ThemeButton onClick={toggleTheme}>
             <ThemeIcon />
-          </ThemeItem>
+          </ThemeButton>
         </div>
       </NavBar>
 

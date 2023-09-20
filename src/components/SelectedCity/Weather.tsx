@@ -3,7 +3,7 @@ import { WeatherIcon } from "./WeatherIcon";
 import { CurrentContainer, CurrentLeftSide, CurrentRightSide } from "./styles";
 import { useCityStore } from "../../hooks/useCity";
 import { formatTime, getWeek } from "../../util/time";
-import { useCofig } from "../../hooks/useConfig";
+import { useConfig } from "../../hooks/useConfig";
 import { isBetween } from "../../util/number";
 import { unit } from "../../util/unit";
 import { Loading } from "../Loading";
@@ -13,7 +13,7 @@ export const Weather: React.FC<{
 }> = ({ type }) => {
   const { weather, isLoading } = useWeather();
   const { city } = useCityStore();
-  const { seconds, hourType, units } = useCofig();
+  const { seconds, hourType, units } = useConfig();
 
   if (isLoading) {
     return <Loading />;
@@ -41,26 +41,27 @@ export const Weather: React.FC<{
           <div>{weather.current.weather[0].main}</div>
         </CurrentLeftSide>
         <CurrentRightSide>
-          <div>Temp: {weather.current.temp} C</div>
-          <div>Feels Like: {weather.current.feels_like} C</div>
-          <div>Humidity: {weather.current.humidity} C</div>
+          <div>
+            Temp: {weather.current.temp} {unit(units)}
+          </div>
+          <div>
+            Feels Like: {weather.current.feels_like} {unit(units)}
+          </div>
+          <div>Humidity: {weather.current.humidity} %</div>
           <div>
             Sunrise:{" "}
-            {formatTime(
-              new Date(
-                (weather.current.sunrise + weather.timezone_offset) * 1000,
-              ),
-              { seconds, type: hourType },
-            )}
+            {formatTime(new Date(weather.current.sunrise * 1000), {
+              seconds,
+              type: hourType,
+              timezone: weather.timezone,
+            })}
           </div>
           <div>
             Sunset:{" "}
-            {formatTime(
-              new Date(
-                (weather.current.sunset + weather.timezone_offset) * 1000,
-              ),
-              { seconds, type: hourType },
-            )}
+            {formatTime(new Date(weather.current.sunset * 1000), {
+              seconds,
+              type: hourType,
+            })}
           </div>
         </CurrentRightSide>
       </CurrentContainer>

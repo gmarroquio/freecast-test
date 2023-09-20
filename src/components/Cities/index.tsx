@@ -5,7 +5,7 @@ import { CitiesGrid } from "./styles";
 export const Cities: React.FC = () => {
   return (
     <CitiesGrid>
-      <CityComponent city={cities[0]} />
+      <CityComponent city={cities[308]} />
       <CityComponent city={cities[1]} />
       <CityComponent city={cities[2]} />
       <CityComponent city={cities[3]} />
