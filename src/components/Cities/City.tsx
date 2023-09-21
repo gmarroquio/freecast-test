@@ -3,6 +3,7 @@ import { City } from "./styles";
 
 export const CityComponent: React.FC<{ city: CityType }> = ({ city }) => {
   const { setCity, city: selected } = useCityStore();
+
   return (
     <City
       $selected={city.name === selected?.name}
