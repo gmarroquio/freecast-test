@@ -30,7 +30,7 @@ export const Modal: React.FC<{
 
   useEffect(() => {
     temporaryStorage.changeConfig({ units, hourType });
-  }, [units, hourType, temporaryStorage]);
+  }, [units, hourType]);
 
   const handleSave = () => {
     changeConfig({
