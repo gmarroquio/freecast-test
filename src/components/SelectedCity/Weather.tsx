@@ -73,15 +73,15 @@ export const Weather: React.FC<{
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          margin: "10rem auto 0",
+          margin: "0 auto ",
           alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <div style={{ marginBottom: "1rem" }}>{city?.name}</div>
         <div
           style={{
             display: "grid",
-            flex: 1,
             gridTemplateColumns: "repeat(5, 1fr)",
             gridColumnGap: "1rem",
           }}
