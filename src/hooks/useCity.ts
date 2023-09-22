@@ -46,7 +46,7 @@ export const useCity = () => {
       setOriginal(citiesList);
       sessionStorage.setItem("cities", JSON.stringify(citiesList));
     }
-  }, []);
+  }, [setCities]);
 
   const searchCity = (s: string) => {
     if (original) {

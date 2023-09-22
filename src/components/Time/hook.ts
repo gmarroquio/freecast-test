@@ -29,7 +29,7 @@ export const useTime = () => {
     return () => {
       clearInterval(timer);
     };
-  }, [hourType]);
+  }, [hourType, setTime]);
 
   return {
     time,

@@ -5,7 +5,7 @@ import ThemeIcon from "../../assets/theme-switch.svg";
 import { Cities } from "../Cities";
 import { useConfig } from "../../hooks/useConfig";
 import { Modal } from "../Modal";
-import { useRef, useState } from "react";
+import { ChangeEventHandler, useRef, useState } from "react";
 import { useCity } from "../../hooks/useCity";
 import CloseCircle from "../../assets/close-circle.svg";
 
@@ -15,7 +15,7 @@ export const Layout: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSearch = (e: any) => {
+  const handleSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
     searchCity(e.target.value);
   };
 
