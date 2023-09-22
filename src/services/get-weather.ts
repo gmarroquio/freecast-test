@@ -40,7 +40,7 @@ export const getWeather = async ({
   lon: number;
   units: UnitType;
 }) => {
-  const { data } = await api.get<WeatherResponse>("data/2.5/onecall?", {
+  const { data } = await api.get<WeatherResponse>("data/2.5/onecall", {
     params: { lat, lon, exclude: "minutely,hourly,alerts", units },
   });
 
