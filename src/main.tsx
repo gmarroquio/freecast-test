@@ -15,6 +15,10 @@ const queryClient = new QueryClient({
   },
 });
 
+window.onload = function () {
+  sessionStorage.clear();
+};
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>

@@ -26,18 +26,26 @@ export const useCity = () => {
   const [original, setOriginal] = useState<CityType[] | undefined>(undefined);
 
   useEffect(() => {
-    const citiesMap = new Map<number, CityType>();
-    const citiesList: CityType[] = [];
-    while (citiesMap.size < 18) {
-      const index = getRandomInt(0, CITIES.length);
-      citiesMap.set(index, CITIES[index]);
-    }
-    for (const newCity of citiesMap.entries()) {
-      citiesList.push(newCity[1]);
-    }
+    const sessionData = sessionStorage.getItem("cities");
+    if (sessionData) {
+      const parsed = JSON.parse(sessionData);
+      setCities(parsed);
+      setOriginal(parsed);
+    } else {
+      const citiesMap = new Map<number, CityType>();
+      const citiesList: CityType[] = [];
+      while (citiesMap.size < 18) {
+        const index = getRandomInt(0, CITIES.length);
+        citiesMap.set(index, CITIES[index]);
+      }
+      for (const newCity of citiesMap.entries()) {
+        citiesList.push(newCity[1]);
+      }
 
-    setCities(citiesList);
-    setOriginal(citiesList);
+      setCities(citiesList);
+      setOriginal(citiesList);
+      sessionStorage.setItem("cities", JSON.stringify(citiesList));
+    }
   }, []);
 
   const searchCity = (s: string) => {
