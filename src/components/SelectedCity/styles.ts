@@ -86,3 +86,24 @@ export const CurrentLeftSide = styled.div`
 export const CurrentRightSide = styled.div`
   margin-left: 1.5rem;
 `;
+
+export const FiveDaysContainer = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const FiveDaysWeatherGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 1rem;
+`;
+
+export const FiveDaysWeatherCell = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

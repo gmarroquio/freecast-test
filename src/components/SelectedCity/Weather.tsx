@@ -1,6 +1,13 @@
 import { useWeather } from "../../hooks/useWeather";
 import { WeatherIcon } from "./WeatherIcon";
-import { CurrentContainer, CurrentLeftSide, CurrentRightSide } from "./styles";
+import {
+  CurrentContainer,
+  CurrentLeftSide,
+  CurrentRightSide,
+  FiveDaysContainer,
+  FiveDaysWeatherCell,
+  FiveDaysWeatherGrid,
+} from "./styles";
 import { useCityStore } from "../../hooks/useCity";
 import { formatTime, getWeek } from "../../util/time";
 import { useConfig } from "../../hooks/useConfig";
@@ -68,33 +75,11 @@ export const Weather: React.FC<{
     );
   else if (type === "five-days")
     return (
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          margin: "0 auto ",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <FiveDaysContainer>
         <div style={{ marginBottom: "1rem" }}>{city?.name}</div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
-            gridColumnGap: "1rem",
-          }}
-        >
+        <FiveDaysWeatherGrid>
           {weather?.daily.slice(1, 6).map((d) => (
-            <div
-              key={d.dt}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
+            <FiveDaysWeatherCell>
               <div>{getWeek(new Date(d.dt * 1000))}</div>
               <WeatherIcon
                 id={d.weather[0].id}
@@ -104,9 +89,9 @@ export const Weather: React.FC<{
               <div>
                 H: {d.temp.max} {unit(units)} / L: {d.temp.min} {unit(units)}
               </div>
-            </div>
+            </FiveDaysWeatherCell>
           ))}
-        </div>
-      </div>
+        </FiveDaysWeatherGrid>
+      </FiveDaysContainer>
     );
 };
