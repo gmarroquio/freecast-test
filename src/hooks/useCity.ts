@@ -35,7 +35,7 @@ export const useCity = () => {
       const citiesMap = new Map<number, CityType>();
       const citiesList: CityType[] = [];
       while (citiesMap.size < 18) {
-        const index = getRandomInt(0, CITIES.length);
+        const index = getRandomInt(0, CITIES.length - 1);
         citiesMap.set(index, CITIES[index]);
       }
       for (const newCity of citiesMap.entries()) {
